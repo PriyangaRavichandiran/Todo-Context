@@ -20,7 +20,7 @@ function InputForm(){
             <br />
             <div className="d-flex justify-content-start align-items-center">
                 <Button variant="primary" onClick={handleAddTodo} className="me-2">Add</Button>
-                <Button variant="danger" onClick={resetTodo} >Reset</Button>
+                <Button variant="danger" onClick={resetTodo} >Clear All</Button>
             </div>
             <br />
         </Form>
