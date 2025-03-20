@@ -1,0 +1,31 @@
+import React, { createContext, useContext, useState } from "react";
+
+// Create a Context
+const TodoContext = createContext();
+
+// Create a Provider Component
+export const TodoProvider = ({ children }) => {
+  const [todos, setTodos] = useState([]);
+
+  //  Function to Add a New To-Do
+  const addTodo = (title) => {
+    setTodos([...todos, { id: Date.now(), title }]);
+  };
+  const resetTodo = (title) => {
+    setTodos([]);
+  };
+
+  //  Function to Delete a To-Do
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  return (
+    <TodoContext.Provider value={{ todos, addTodo, deleteTodo,resetTodo }}>
+      {children}
+    </TodoContext.Provider>
+  );
+};
+
+//  Custom Hook for easier access
+export const useTodos = () => useContext(TodoContext);
